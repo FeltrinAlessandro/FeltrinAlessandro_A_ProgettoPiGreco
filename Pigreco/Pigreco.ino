@@ -14,10 +14,12 @@ void setup() {
   // put your setup code here, to run once:
   lcd.begin(16, 2);
   tempo = 5000;
+  record = 0;
 
 }
 
 void loop() {
+  
   // put your main code here, to run repeatedly:
 
 }
@@ -81,14 +83,19 @@ void Gioco(int numeroVite)
     {
       posPiGreco = random(2,7);
       lcd.setCursor((posPiGreco-1)*3,2);
+      lcd.print("π")
     }
     else if(valoreCasuale>=7 &&  valoreCasuale <=9)
     {
       posBomba = random(2,7);
+      lcd.setCursor((posBomba-1)*3,2);
+      lcd.print("◘")
     }
     else
     {
       posVita = random(2,7);
+      lcd.setCursor((posVita-1)*3,2);
+      lcd.print("♥")
     }
     ControlloRisultato();
     if(punteggioAttuale > record)
