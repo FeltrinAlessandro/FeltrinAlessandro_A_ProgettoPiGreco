@@ -19,9 +19,8 @@ void setup() {
 }
 
 void loop() {
-  
-  // put your main code here, to run repeatedly:
-
+punteggioAttuale = 0;
+HomeScreen();
 }
 
 void bottone (int pulsante)
@@ -43,7 +42,7 @@ void ControlloRisultato ()
   bool finito=false;
   while(!finito)
   {
-    if(posVita!= -1 && digitalRead(posVita) == HIGH)
+    if(posVita!= -1 && digitalRead(posVita) == HIGH)//problema con i bottoni
     {
       vita++;
       finito = true;
@@ -69,6 +68,7 @@ void ControlloRisultato ()
       tempo = tempo - 200;
     }
   }
+  RefreshScreen();
 }
 
 void Gioco(int numeroVite)
@@ -76,26 +76,27 @@ void Gioco(int numeroVite)
   vita = numeroVite;
   bool finito = false;
   int valoreCasuale;
+  RefreshScreen();
   while(!finito)
   {
     valoreCasuale = random(1,11);
     if(valoreCasuale>=1 && valoreCasuale <=6)
     {
       posPiGreco = random(2,7);
-      lcd.setCursor((posPiGreco-1)*3,2);
-      lcd.print("π")
+      lcd.setCursor((posPiGreco-1)*3,1);
+      lcd.print("π");
     }
     else if(valoreCasuale>=7 &&  valoreCasuale <=9)
     {
       posBomba = random(2,7);
-      lcd.setCursor((posBomba-1)*3,2);
-      lcd.print("◘")
+      lcd.setCursor((posBomba-1)*3,1);
+      lcd.print("◘");
     }
     else
     {
       posVita = random(2,7);
-      lcd.setCursor((posVita-1)*3,2);
-      lcd.print("♥")
+      lcd.setCursor((posVita-1)*3,1);
+      lcd.print("♥");
     }
     ControlloRisultato();
     if(punteggioAttuale > record)
@@ -106,5 +107,26 @@ void Gioco(int numeroVite)
     {
       finito= true;
     }
+    posVita=-1;
+    posBomba=-1;
+    posPiGreco=-1;
   }
+}
+
+void RefreshScreen()
+{
+  lcd.clear();
+  lcd.setCursor(3,0);
+  lcd.print("Vite:"+String(vita));
+  lcd.setCursor(10,0);
+  lcd.print("Punteggio:"+String(punteggioAttuale));
+}
+
+void HomeScreen()
+{
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Premere Start");
+  lcd.setCursor(0,1);
+  lcd.print("Record:"+String(record));
 }
