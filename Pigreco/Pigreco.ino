@@ -42,7 +42,7 @@ void ControlloRisultato ()
   bool finito=false;
   while(!finito)
   {
-    if(posVita!= -1 && digitalRead(posVita) == HIGH)//problema con i bottoni
+    if(posVita!= -1 && digitalRead(posVita) == HIGH)
     {
       vita++;
       finito = true;
@@ -79,6 +79,9 @@ void Gioco(int numeroVite)
   RefreshScreen();
   while(!finito)
   {
+    posVita = -1;
+    posBomba = -1;
+    posPiGreco = -1;
     valoreCasuale = random(1,11);
     if(valoreCasuale>=1 && valoreCasuale <=6)
     {
@@ -107,9 +110,6 @@ void Gioco(int numeroVite)
     {
       finito= true;
     }
-    posVita=-1;
-    posBomba=-1;
-    posPiGreco=-1;
   }
 }
 
