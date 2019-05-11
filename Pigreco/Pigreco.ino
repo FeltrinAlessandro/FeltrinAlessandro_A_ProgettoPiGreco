@@ -9,21 +9,40 @@ int posVita;
 int record;
 int vita;
 int punteggioAttuale;
+int button1;
+int button2;
+int button3;
+int button4;
+int button5;
+int buttonStart;
 
 void setup() {
   // put your setup code here, to run once:
   lcd.begin(16, 2);
-  tempo = 5000;
+  int button1 = 2;
+  int button2 = 3;
+  int button3 = 4;
+  int button4 = 5;
+  int button5 = 6;
+  int buttonStart = 7;
+  pinMode(button1,INPUT);
+  pinMode(button2,INPUT);
+  pinMode(button3,INPUT);
+  pinMode(button4,INPUT);
+  pinMode(button5,INPUT);
+  pinMode(buttonStart,INPUT);
   record = 0;
-
 }
 
 void loop() {
+tempo = 5000;
 punteggioAttuale = 0;
 HomeScreen();
+Bottone(buttonStart);
+Gioco(3);
 }
 
-void bottone (int pulsante)
+void Bottone (int pulsante)
 {
   bool finito = false;
   while(!finito)
