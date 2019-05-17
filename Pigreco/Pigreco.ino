@@ -58,7 +58,8 @@ void ControlloRisultato ()
 {
   int tempoInizio = millis();
   int tempoSecondario;
-  bool finito=false;
+  bool finito = false;
+  bool PiGrecoSchiacciato = false;
   while(!finito)
   {
     if(posVita!= -1 && digitalRead(posVita) == HIGH)
@@ -75,11 +76,16 @@ void ControlloRisultato ()
     {
       punteggioAttuale++;
       finito = true;
+      PiGrecoSchiacciato = true;
     }
     tempoSecondario = millis();
     if(tempoSecondario-tempoInizio>tempo)
     {
       finito = true;
+      if(PiGrecoSchiacciato == false && posPiGreco !=-1)
+      {
+        vita--;
+      }
     }
 
     if(tempo>2000)
