@@ -19,12 +19,12 @@ int buttonStart;
 void setup() {
   // put your setup code here, to run once:
   lcd.begin(16, 2);
-  int button1 = 2;
-  int button2 = 3;
-  int button3 = 4;
-  int button4 = 5;
-  int button5 = 6;
-  int buttonStart = 7;
+  button1 = 2;
+  button2 = 3;
+  button3 = 4;
+  button4 = 5;
+  button5 = 6;
+  buttonStart = 7;
   pinMode(button1,INPUT);
   pinMode(button2,INPUT);
   pinMode(button3,INPUT);
