@@ -141,9 +141,9 @@ void Gioco(int numeroVite)
 void RefreshScreen()
 {
   lcd.clear();
-  lcd.setCursor(3,0);
-  lcd.print("Vite:"+String(vita));
-  lcd.setCursor(10,0);
+  lcd.setCursor(0,0);
+  lcd.print("V"+String(vita));
+  lcd.setCursor(5,0);
   lcd.print("Punteggio:"+String(punteggioAttuale));
 }
 
